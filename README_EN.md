@@ -89,7 +89,7 @@ Replace with:
 import cn.idev.excel.** ;
 ```
 
-### 3. Depend on FastExcel Without Modifying Code
+### 3. Import FastExcel Without Modifying Code
 If you do not want to modify the code for various reasons, you can directly depend on FastExcel by directly adding the dependency in the pom.xml file. EasyExcel and FastExcel can coexist, but long-term switching to FastExcel is recommended.
 
 ### 4. Future Use of FastExcel Classes Recommended
