@@ -76,7 +76,7 @@ Replace with:
     <version>1.1.0</version>
 </dependency>
 ```
-### 2. Modify Code
+### 2. Update Code
 Replace the EasyExcel package name with the FastExcel package name, as follows:
 ```java
 // Replace EasyExcel package name with FastExcel package name
