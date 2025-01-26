@@ -57,7 +57,7 @@ For detailed update logs, refer to [Details of version updates](update.md). You 
 - FastExcel will continue to update, fix bugs, optimize performance, and add new features.
 ## How to Upgrade from EasyExcel to FastExcel
 
-### 1. Modify Dependencies
+### 1. Update Dependencies
 Replace the EasyExcel dependency with the FastExcel dependency, as follows:
 
 ```xml
