@@ -128,15 +128,6 @@ public class ExcelWriterBuilder extends AbstractExcelWriterParameterBuilder<Exce
     }
     
     public ExcelWriter build() {
-        // If escapeHex is enabled, add the escape handler
-        if (Boolean.TRUE.equals(writeWorkbook.getEscapeHex())) {
-            // Create the escape handler and add it to customWriteHandlerList
-            EscapeHexCellWriteHandler escapeHandler = new EscapeHexCellWriteHandler();
-            if (writeWorkbook.getCustomWriteHandlerList() == null) {
-                writeWorkbook.setCustomWriteHandlerList(new ArrayList<>());
-            }
-            writeWorkbook.getCustomWriteHandlerList().add(escapeHandler);
-        }
         return new ExcelWriter(writeWorkbook);
     }
     
@@ -162,17 +153,6 @@ public class ExcelWriterBuilder extends AbstractExcelWriterParameterBuilder<Exce
             excelWriterSheetBuilder.sheetName(sheetName);
         }
         return excelWriterSheetBuilder;
-    }
-    
-    /**
-     * Whether to escape _x[0-9A-Fa-f]{4}_ format strings to prevent POI from automatically decoding them.
-     *
-     * @param escapeHex
-     * @return
-     */
-    public ExcelWriterBuilder escapeHex(Boolean escapeHex) {
-        writeWorkbook.setEscapeHex(escapeHex);
-        return this;
     }
     
     @Override

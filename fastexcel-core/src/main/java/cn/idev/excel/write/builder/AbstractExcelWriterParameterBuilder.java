@@ -133,4 +133,10 @@ public abstract class AbstractExcelWriterParameterBuilder<T extends AbstractExce
         parameter().setOrderByIncludeColumn(orderByIncludeColumn);
         return self();
     }
+    
+    
+    public T escapeHex(Boolean escapeHex) {
+        parameter().setEscapeHex(escapeHex);
+        return self();
+    }
 }
