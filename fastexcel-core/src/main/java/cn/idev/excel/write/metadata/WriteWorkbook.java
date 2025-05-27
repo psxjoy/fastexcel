@@ -86,4 +86,10 @@ public class WriteWorkbook extends WriteBasicParameter {
      * Excel is also written in the event of an exception being thrown.The default false.
      */
     private Boolean writeExcelOnException;
+    
+    /**
+     * Whether to escape _x[0-9A-Fa-f]{4}_ format strings to prevent POI from automatically decoding them.
+     * Default false.
+     */
+    private Boolean escapeHex;
 }
