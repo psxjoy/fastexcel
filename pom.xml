@@ -228,7 +228,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
-                        <argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
+                        <argLine>
+                            ${surefireArgLine}
+                        </argLine>
                     </configuration>
                     <!--                    please add below configuration if you are using JDK 9 or higher-->
                     <!--                    <configuration>-->
@@ -413,8 +415,8 @@
                         </indent>
                     </java>
                     <pom>
-                        <trimTrailingWhitespace />
-                        <endWithNewline />
+                        <trimTrailingWhitespace/>
+                        <endWithNewline/>
                         <indent>
                             <spaces>true</spaces>
                             <spacesPerTab>4</spacesPerTab>
@@ -445,4 +447,33 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>jdk9plus</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <properties>
+                    <surefireArgLine>--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.reflect.annotation=ALL-UNNAMED -Dfile.encoding=UTF-8</surefireArgLine>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk8v0</id>
+            <activation>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <surefireArgLine> -Dfile.encoding=UTF-8</surefireArgLine>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk8v1</id>
+            <activation>
+                <jdk>8</jdk>
+            </activation>
+            <properties>
+                <surefireArgLine> -Dfile.encoding=UTF-8</surefireArgLine>
+            </properties>
+        </profile>
+    </profiles>
 </project>
