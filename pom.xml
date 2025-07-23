@@ -31,7 +31,7 @@
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <gpg.skip>true</gpg.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
-        <maven.test.skip>true</maven.test.skip>
+        <maven.test.skip>false</maven.test.skip>
         <commons-csv.version>1.11.0</commons-csv.version>
         <poi.version>5.4.1</poi.version>
         <poi-ooxml.version>5.4.1</poi-ooxml.version>
@@ -229,7 +229,7 @@
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <argLine>
-                            ${surefireArgLine} -Dfile.encoding=UTF-8
+                            ${surefireArgLine}
                         </argLine>
                     </configuration>
                     <!--                    please add below configuration if you are using JDK 9 or higher-->
@@ -455,6 +455,15 @@
             </activation>
             <properties>
                     <surefireArgLine>--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.reflect.annotation=ALL-UNNAMED</surefireArgLine>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk8plus</id>
+            <activation>
+                <jdk>[8,9)</jdk>
+            </activation>
+            <properties>
+                <surefireArgLine> -Dfile.encoding=UTF-8</surefireArgLine>
             </properties>
         </profile>
     </profiles>
