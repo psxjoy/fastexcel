@@ -31,7 +31,7 @@
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <gpg.skip>true</gpg.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
-        <maven.test.skip>true</maven.test.skip>
+        <maven.test.skip>false</maven.test.skip>
         <commons-csv.version>1.11.0</commons-csv.version>
         <poi.version>5.4.1</poi.version>
         <poi-ooxml.version>5.4.1</poi-ooxml.version>
@@ -458,12 +458,21 @@
             </properties>
         </profile>
         <profile>
-            <id>jdk8plus</id>
+            <id>jdk8v0</id>
             <activation>
-                <jdk>[8,9)</jdk>
+                <jdk>1.8</jdk>
             </activation>
             <properties>
-                <surefireArgLine> -Dfile.encoding=UTF-8</surefireArgLine>
+                <surefireArgLine></surefireArgLine>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk8v1</id>
+            <activation>
+                <jdk>8</jdk>
+            </activation>
+            <properties>
+                <surefireArgLine></surefireArgLine>
             </properties>
         </profile>
     </profiles>
