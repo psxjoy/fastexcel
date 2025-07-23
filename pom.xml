@@ -229,7 +229,7 @@
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <argLine>
-                            ${argLine} -Dfile.encoding=UTF-8
+                            ${surefireArgLine} -Dfile.encoding=UTF-8
                         </argLine>
                     </configuration>
                     <!--                    please add below configuration if you are using JDK 9 or higher-->
@@ -454,10 +454,7 @@
                 <jdk>[9,)</jdk>
             </activation>
             <properties>
-                <jdk.module.addopens>
-                    --add-opens=java.base/java.lang=ALL-UNNAMED
-                    --add-opens=java.base/sun.reflect.annotation=ALL-UNNAMED
-                </jdk.module.addopens>
+                    <surefireArgLine>--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.reflect.annotation=ALL-UNNAMED</surefireArgLine>
             </properties>
         </profile>
     </profiles>
