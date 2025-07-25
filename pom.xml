@@ -458,18 +458,9 @@
             </properties>
         </profile>
         <profile>
-            <id>jdk8v0</id>
+            <id>jdk8</id>
             <activation>
                 <jdk>1.8</jdk>
-            </activation>
-            <properties>
-                <surefireArgLine> -Dfile.encoding=UTF-8</surefireArgLine>
-            </properties>
-        </profile>
-        <profile>
-            <id>jdk8v1</id>
-            <activation>
-                <jdk>8</jdk>
             </activation>
             <properties>
                 <surefireArgLine> -Dfile.encoding=UTF-8</surefireArgLine>
