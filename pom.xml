@@ -229,7 +229,7 @@
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <argLine>
-                            ${surefireArgLine}
+                            ${argLine} ${surefireArgLine}
                         </argLine>
                     </configuration>
                     <!--                    please add below configuration if you are using JDK 9 or higher-->
