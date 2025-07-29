@@ -7,6 +7,11 @@ import cn.idev.excel.test.util.TestFileUtil;
 import cn.idev.excel.util.BeanMapUtils;
 import cn.idev.excel.util.FileUtils;
 import cn.idev.excel.util.ListUtils;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -17,15 +22,8 @@ import org.apache.poi.xssf.streaming.SXSSFDrawing;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
 
 @Slf4j
 public class TempWriteTest {
@@ -34,17 +32,18 @@ public class TempWriteTest {
     public void write() {
         TempWriteData tempWriteData = new TempWriteData();
         tempWriteData.setName("zs\r\n \\ \r\n t4");
-        EasyExcel.write(TestFileUtil.getPath() + "TempWriteTest" + System.currentTimeMillis() + ".xlsx",
-                TempWriteData.class)
-            .sheet()
-            .registerConverter(new CustomStringStringConverter())
-            .doWrite(ListUtils.newArrayList(tempWriteData));
+        EasyExcel.write(
+                        TestFileUtil.getPath() + "TempWriteTest" + System.currentTimeMillis() + ".xlsx",
+                        TempWriteData.class)
+                .sheet()
+                .registerConverter(new CustomStringStringConverter())
+                .doWrite(ListUtils.newArrayList(tempWriteData));
 
-        EasyExcel.write(TestFileUtil.getPath() + "TempWriteTest" + System.currentTimeMillis() + ".xlsx",
-                TempWriteData.class)
-            .sheet()
-            .doWrite(ListUtils.newArrayList(tempWriteData));
-
+        EasyExcel.write(
+                        TestFileUtil.getPath() + "TempWriteTest" + System.currentTimeMillis() + ".xlsx",
+                        TempWriteData.class)
+                .sheet()
+                .doWrite(ListUtils.newArrayList(tempWriteData));
     }
 
     @Test
@@ -64,15 +63,14 @@ public class TempWriteTest {
         BeanMap beanMap2 = BeanMapUtils.create(tempWriteData2);
         beanMap2.putAll(map);
         log.info("3{}", tempWriteData2.getName());
-
     }
 
     @Test
     public void imageWrite() throws Exception {
-        //String fileName = TestFileUtil.getPath() + "imageWrite" + System.currentTimeMillis() + ".xlsx";
+        // String fileName = TestFileUtil.getPath() + "imageWrite" + System.currentTimeMillis() + ".xlsx";
         //
         //// 这里 需要指定写用哪个class去写
-        //try (ExcelWriter excelWriter = EasyExcel.write(fileName, DemoData.class).build()) {
+        // try (ExcelWriter excelWriter = EasyExcel.write(fileName, DemoData.class).build()) {
         //    // 这里注意 如果同一个sheet只要创建一次
         //    WriteSheet writeSheet = EasyExcel.writerSheet("模板").build();
         //    // 去调用写入,这里我调用了五次，实际使用时根据数据库分页的总的页数来
@@ -81,15 +79,14 @@ public class TempWriteTest {
         //        List<DemoData> data = data();
         //        excelWriter.write(data, writeSheet);
         //    }
-        //}
+        // }
     }
 
     @Test
     public void imageWritePoi(@TempDir Path tempDir) throws Exception {
         String file = tempDir.resolve(System.currentTimeMillis() + ".xlsx").toString();
         try (SXSSFWorkbook workbook = new SXSSFWorkbook();
-             FileOutputStream fileOutputStream = new FileOutputStream(file);
-        ) {
+                FileOutputStream fileOutputStream = new FileOutputStream(file); ) {
             SXSSFSheet sheet = workbook.createSheet("测试");
             CreationHelper helper = workbook.getCreationHelper();
             SXSSFDrawing sxssfDrawin = sheet.createDrawingPatriarch();
@@ -117,8 +114,7 @@ public class TempWriteTest {
     public void tep(@TempDir Path tempDir) throws Exception {
         String file = tempDir.resolve(System.currentTimeMillis() + ".xlsx").toString();
         try (SXSSFWorkbook workbook = new SXSSFWorkbook();
-             FileOutputStream fileOutputStream = new FileOutputStream(file);
-        ) {
+                FileOutputStream fileOutputStream = new FileOutputStream(file); ) {
             SXSSFSheet sheet = workbook.createSheet("测试");
             CreationHelper helper = workbook.getCreationHelper();
             SXSSFDrawing sxssfDrawin = sheet.createDrawingPatriarch();
@@ -140,24 +136,5 @@ public class TempWriteTest {
             }
             workbook.write(fileOutputStream);
         }
-    }
-
-    @Test
-    public void large(@TempDir Path tempDir) throws Exception {
-        String file = tempDir.resolve(System.currentTimeMillis() + ".xlsx").toString();
-        SXSSFWorkbook workbook = new SXSSFWorkbook(new XSSFWorkbook(
-            new File(
-                "src/test/resources/large/large07.xlsx")));
-        SXSSFSheet sheet = workbook.createSheet("测试");
-
-        SXSSFRow row = sheet.createRow(500000);
-        SXSSFCell cell = row.createCell(0);
-        cell.setCellValue("test");
-
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        workbook.write(fileOutputStream);
-        fileOutputStream.flush();
-        workbook.close();
-
     }
 }

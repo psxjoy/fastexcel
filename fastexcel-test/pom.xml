@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.idev.excel</groupId>
-            <artifactId>fastexcel-core</artifactId>
+            <artifactId>fastexcel</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -75,6 +75,10 @@
                     </includes>
                     <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
