@@ -21,6 +21,7 @@ package org.apache.fesod.excel.write.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import org.apache.fesod.excel.enums.HeaderMergeStrategy;
 import org.apache.fesod.excel.metadata.AbstractParameterBuilder;
 import org.apache.fesod.excel.write.handler.WriteHandler;
 import org.apache.fesod.excel.write.metadata.WriteBasicParameter;
@@ -85,6 +86,18 @@ public abstract class AbstractExcelWriterParameterBuilder<
      */
     public T automaticMergeHead(Boolean automaticMergeHead) {
         parameter().setAutomaticMergeHead(automaticMergeHead);
+        return self();
+    }
+
+    /**
+     * Set header merge strategy.
+     * If not set, the behavior is determined by {@link #automaticMergeHead} for backward compatibility.
+     *
+     * @param strategy Header merge strategy
+     * @return this
+     */
+    public T headerMergeStrategy(HeaderMergeStrategy strategy) {
+        parameter().setHeaderMergeStrategy(strategy);
         return self();
     }
 

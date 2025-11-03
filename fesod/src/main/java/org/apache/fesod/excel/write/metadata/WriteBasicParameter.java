@@ -25,6 +25,7 @@ import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.fesod.excel.enums.HeaderMergeStrategy;
 import org.apache.fesod.excel.metadata.BasicParameter;
 import org.apache.fesod.excel.write.handler.WriteHandler;
 
@@ -57,6 +58,11 @@ public class WriteBasicParameter extends BasicParameter {
      * Whether to automatically merge headers.Default is true.
      */
     private Boolean automaticMergeHead;
+    /**
+     * Header merge strategy.
+     * If null, the behavior is determined by {@link #automaticMergeHead} for backward compatibility.
+     */
+    private HeaderMergeStrategy headerMergeStrategy;
     /**
      * Ignore the custom columns.
      */

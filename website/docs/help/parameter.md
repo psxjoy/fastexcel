@@ -56,6 +56,7 @@ class ReadWorkbook {
 class WriteBasicParameter {
   - Boolean useDefaultStyle
   - Boolean automaticMergeHead
+  - HeaderMergeStrategy headerMergeStrategy
   - Collection~Integer~ includeColumnIndexes
   - Collection~String~ excludeColumnFieldNames
   - Boolean orderByIncludeColumn
@@ -164,12 +165,36 @@ All parameters inherit from `BasicParameter`.
 | relativeHeadRowIndex    | 0             | Number of rows to leave blank above Excel.                                                                                                                                       |
 | needHead                | true          | Whether to write the header to Excel.                                                                                                                                            |
 | useDefaultStyle         | true          | Whether to use default styles.                                                                                                                                                   |
-| automaticMergeHead      | true          | Automatically merge headers, matching the same fields above, below, left, and right in the header.                                                                               |
+| automaticMergeHead      | true          | Automatically merge headers, matching the same fields above, below, left, and right in the header. **Note**: For more control, use `headerMergeStrategy` instead.                |
+| headerMergeStrategy     | null          | Header merge strategy. If null, the behavior is determined by `automaticMergeHead` for backward compatibility. Options: `NONE`, `HORIZONTAL_ONLY`, `VERTICAL_ONLY`, `FULL_RECTANGLE`, `AUTO`. See details below. |
 | excludeColumnIndexes    | Empty         | Exclude indexes of data in the object.                                                                                                                                           |
 | excludeColumnFieldNames | Empty         | Exclude fields of data in the object.                                                                                                                                            |
 | includeColumnIndexes    | Empty         | Only export indexes of data in the object.                                                                                                                                       |
 | includeColumnFieldNames | Empty         | Only export fields of data in the object.                                                                                                                                        |
 | orderByIncludeColumn    | false         | When using the parameters `includeColumnFieldNames` or `includeColumnIndexes`, it will sort according to the order of the collection passed in.                                  |
+
+#### Header Merge Strategy
+
+The `headerMergeStrategy` parameter provides fine-grained control over how headers are merged:
+
+- **NONE**: No automatic merging is performed.
+- **HORIZONTAL_ONLY**: Only merges cells horizontally (same row).
+- **VERTICAL_ONLY**: Only merges cells vertically (same column).
+- **FULL_RECTANGLE**: Only merges complete rectangular regions where all cells have the same name.
+- **AUTO**: Automatic merging (default behavior for backward compatibility), with improved context validation to prevent incorrect merges.
+
+**Example**:
+```java
+FastExcel.write(fileName)
+    .head(head)
+    .headerMergeStrategy(HeaderMergeStrategy.FULL_RECTANGLE)
+    .sheet()
+    .doWrite(data());
+```
+
+**Note**: If `headerMergeStrategy` is not set, the behavior is determined by `automaticMergeHead`:
+- `automaticMergeHead == true` → `HeaderMergeStrategy.AUTO`
+- `automaticMergeHead == false` → `HeaderMergeStrategy.NONE`
 
 ### WriteWorkbook
 

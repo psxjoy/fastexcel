@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.util.Map;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.fesod.excel.enums.HeaderMergeStrategy;
 import org.apache.fesod.excel.enums.WriteTypeEnum;
 import org.apache.fesod.excel.exception.ExcelGenerateException;
 import org.apache.fesod.excel.metadata.CellRange;
@@ -296,8 +297,9 @@ public class WriteContextImpl implements WriteContext {
         }
         int newRowIndex = writeSheetHolder.getNewRowIndexAndStartDoWrite();
         newRowIndex += currentWriteHolder.relativeHeadRowIndex();
-        if (currentWriteHolder.automaticMergeHead()) {
-            addMergedRegionToCurrentSheet(excelWriteHeadProperty, newRowIndex);
+        HeaderMergeStrategy mergeStrategy = currentWriteHolder.headerMergeStrategy();
+        if (mergeStrategy != null && mergeStrategy != HeaderMergeStrategy.NONE) {
+            addMergedRegionToCurrentSheet(excelWriteHeadProperty, newRowIndex, mergeStrategy);
         }
         for (int relativeRowIndex = 0, i = newRowIndex;
                 i < excelWriteHeadProperty.getHeadRowNumber() + newRowIndex;
@@ -321,9 +323,11 @@ public class WriteContextImpl implements WriteContext {
      *
      * @param excelWriteHeadProperty The header property for writing.
      * @param rowIndex               The starting row index for merging.
+     * @param mergeStrategy         The merge strategy to use.
      */
-    private void addMergedRegionToCurrentSheet(ExcelWriteHeadProperty excelWriteHeadProperty, int rowIndex) {
-        for (CellRange cellRangeModel : excelWriteHeadProperty.headCellRangeList()) {
+    private void addMergedRegionToCurrentSheet(
+            ExcelWriteHeadProperty excelWriteHeadProperty, int rowIndex, HeaderMergeStrategy mergeStrategy) {
+        for (CellRange cellRangeModel : excelWriteHeadProperty.headCellRangeList(mergeStrategy)) {
             writeSheetHolder
                     .getSheet()
                     .addMergedRegionUnsafe(new CellRangeAddress(
