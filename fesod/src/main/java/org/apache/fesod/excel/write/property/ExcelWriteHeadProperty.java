@@ -234,11 +234,16 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
         if (row1 > 0) {
             // Check if all cells in the range have the same context above
             for (int col = startCol; col <= endCol; col++) {
-                if (headList.get(col).getHeadNameList().size() <= row1) {
-                    continue;
+                boolean hasUpper1 = headList.get(col).getHeadNameList().size() > row1;
+                boolean hasUpper2 = headList.get(col).getHeadNameList().size() > row2;
+
+                // If one row has upper context but the other doesn't, don't merge
+                if (hasUpper1 != hasUpper2) {
+                    return false;
                 }
-                String upper1 = headList.get(col).getHeadNameList().get(row1 - 1);
-                if (headList.get(col).getHeadNameList().size() > row2) {
+
+                if (hasUpper1) {
+                    String upper1 = headList.get(col).getHeadNameList().get(row1 - 1);
                     String upper2 = headList.get(col).getHeadNameList().get(row2 - 1);
                     // If context (upper cells) is different, don't merge
                     if (!Objects.equals(upper1, upper2)) {

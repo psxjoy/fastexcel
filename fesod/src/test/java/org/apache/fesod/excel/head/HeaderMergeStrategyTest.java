@@ -28,6 +28,7 @@ import org.apache.fesod.excel.enums.HeaderMergeStrategy;
 import org.apache.fesod.excel.util.TestFileUtil;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -97,7 +98,7 @@ public class HeaderMergeStrategyTest {
             }
 
             // Assert that C2 and D2 are NOT merged
-            assert !c2AndD2Merged : "C2 and D2 should not be merged in issue #666 scenario";
+            Assertions.assertFalse(c2AndD2Merged, "C2 and D2 should not be merged in issue #666 scenario");
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
         }
@@ -116,7 +117,7 @@ public class HeaderMergeStrategyTest {
         try (org.apache.poi.ss.usermodel.Workbook workbook =
                 org.apache.poi.ss.usermodel.WorkbookFactory.create(fileNone)) {
             Sheet sheet = workbook.getSheetAt(0);
-            assert sheet.getNumMergedRegions() == 0 : "NONE strategy should not create any merged regions";
+            Assertions.assertEquals(0, sheet.getNumMergedRegions(), "NONE strategy should not create any merged regions");
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
         }
@@ -140,8 +141,8 @@ public class HeaderMergeStrategyTest {
             // All merged regions should be horizontal only (same row)
             for (int i = 0; i < mergedRegionCount; i++) {
                 CellRangeAddress region = sheet.getMergedRegion(i);
-                assert region.getFirstRow() == region.getLastRow()
-                        : "HORIZONTAL_ONLY strategy should only merge cells in the same row";
+                Assertions.assertEquals(region.getFirstRow(), region.getLastRow(),
+                        "HORIZONTAL_ONLY strategy should only merge cells in the same row");
             }
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
@@ -166,8 +167,8 @@ public class HeaderMergeStrategyTest {
             // All merged regions should be vertical only (same column)
             for (int i = 0; i < mergedRegionCount; i++) {
                 CellRangeAddress region = sheet.getMergedRegion(i);
-                assert region.getFirstColumn() == region.getLastColumn()
-                        : "VERTICAL_ONLY strategy should only merge cells in the same column";
+                Assertions.assertEquals(region.getFirstColumn(), region.getLastColumn(),
+                        "VERTICAL_ONLY strategy should only merge cells in the same column");
             }
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
@@ -193,9 +194,10 @@ public class HeaderMergeStrategyTest {
             for (int i = 0; i < mergedRegionCount; i++) {
                 CellRangeAddress region = sheet.getMergedRegion(i);
                 // Verify rectangle is valid (not just a single cell)
-                assert region.getFirstRow() != region.getLastRow()
-                        || region.getFirstColumn() != region.getLastColumn()
-                        : "Merged region should not be a single cell";
+                Assertions.assertTrue(
+                        region.getFirstRow() != region.getLastRow()
+                                || region.getFirstColumn() != region.getLastColumn(),
+                        "Merged region should not be a single cell");
             }
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
@@ -216,7 +218,7 @@ public class HeaderMergeStrategyTest {
                 org.apache.poi.ss.usermodel.WorkbookFactory.create(fileAuto)) {
             Sheet sheet = workbook.getSheetAt(0);
             // Just verify that the file was created successfully
-            assert sheet != null : "Sheet should be created";
+            Assertions.assertNotNull(sheet, "Sheet should be created");
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
         }
