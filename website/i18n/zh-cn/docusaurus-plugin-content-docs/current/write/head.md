@@ -90,7 +90,7 @@ public void dynamicHeadWrite() {
 - **HORIZONTAL_ONLY**: 仅水平合并（同一行内的相同单元格）。
 - **VERTICAL_ONLY**: 仅垂直合并（同一列内的相同单元格）。
 - **FULL_RECTANGLE**: 仅合并完整的矩形区域（所有单元格名称相同）。
-- **AUTO**: 自动合并（默认），增强了上下文验证。
+- **AUTO**: 自动合并（默认）。
 
 ### 代码示例
 
@@ -113,22 +113,6 @@ public void dynamicHeadWriteWithStrategy() {
 ```
 
 ### 常见使用场景
-
-**防止错误合并**: 当您有名称相同但上下文不同的单元格（例如，不同的父级表头）时，使用 `FULL_RECTANGLE` 或 `HORIZONTAL_ONLY`：
-
-```java
-List<List<String>> multiHeader = new ArrayList<>();
-multiHeader.add(new ArrayList<>(Arrays.asList("head10")));
-multiHeader.add(new ArrayList<>(Arrays.asList("head20", "head21")));
-multiHeader.add(new ArrayList<>(Arrays.asList("head30", "head31")));
-multiHeader.add(new ArrayList<>(Arrays.asList("head40", "head31"))); // 相同的名称 "head31" 但上下文不同
-
-FastExcel.write(fileName)
-    .head(multiHeader)
-    .headerMergeStrategy(HeaderMergeStrategy.FULL_RECTANGLE) // 防止错误的垂直合并
-    .sheet()
-    .doWrite(data());
-```
 
 **禁用合并**: 使用 `NONE` 完全禁用自动合并：
 

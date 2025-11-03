@@ -43,7 +43,6 @@ public enum HeaderMergeStrategy {
 
     /**
      * Only vertical merge (same cells in the same column).
-     * Note: This strategy does not check context consistency (unlike AUTO strategy).
      */
     VERTICAL_ONLY,
 
@@ -54,7 +53,6 @@ public enum HeaderMergeStrategy {
 
     /**
      * Auto merge (default behavior for backward compatibility).
-     * Includes context consistency validation to prevent incorrect merges.
      */
     AUTO
 }

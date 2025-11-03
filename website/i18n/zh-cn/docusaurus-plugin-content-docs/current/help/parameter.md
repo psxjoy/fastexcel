@@ -181,7 +181,7 @@ WriteWorkbook  --|>  WriteBasicParameter
 - **HORIZONTAL_ONLY**: 仅水平合并（同一行内的相同单元格）。
 - **VERTICAL_ONLY**: 仅垂直合并（同一列内的相同单元格）。
 - **FULL_RECTANGLE**: 仅合并完整的矩形区域（所有单元格名称相同）。
-- **AUTO**: 自动合并（默认行为，向后兼容），增强了上下文验证以防止错误的合并。
+- **AUTO**: 自动合并（默认行为，向后兼容）。
 
 **示例**:
 ```java

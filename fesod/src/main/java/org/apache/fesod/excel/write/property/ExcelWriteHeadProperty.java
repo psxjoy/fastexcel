@@ -181,7 +181,7 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
                             }
                         }
 
-                        // For AUTO strategy, also check context consistency (above cells)
+                        // For AUTO strategy, also check context consistency
                         if (canMerge && mergeStrategy == HeaderMergeStrategy.AUTO) {
                             canMerge = canMergeVertically(headList, j, k, i, lastCol, headName);
                         }

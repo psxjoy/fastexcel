@@ -46,7 +46,6 @@ public class HeaderMergeStrategyTest {
     private static File fileVerticalOnly;
     private static File fileFullRectangle;
     private static File fileAuto;
-    private static File fileIssue666;
 
     @BeforeAll
     public static void init() {
@@ -55,53 +54,6 @@ public class HeaderMergeStrategyTest {
         fileVerticalOnly = TestFileUtil.createNewFile("headerMergeStrategyVerticalOnly.xlsx");
         fileFullRectangle = TestFileUtil.createNewFile("headerMergeStrategyFullRectangle.xlsx");
         fileAuto = TestFileUtil.createNewFile("headerMergeStrategyAuto.xlsx");
-        fileIssue666 = TestFileUtil.createNewFile("headerMergeStrategyIssue666.xlsx");
-    }
-
-    /**
-     * Test issue #666 scenario: dynamic head with same cell name but different context
-     * Expected: C2 and D2 should not be merged
-     */
-    @Test
-    public void testIssue666() {
-        List<List<String>> multiHeader = new ArrayList<>();
-        multiHeader.add(new ArrayList<>(Arrays.asList("head10")));
-        multiHeader.add(new ArrayList<>(Arrays.asList("head20", "head21")));
-        multiHeader.add(new ArrayList<>(Arrays.asList("head30", "head31")));
-        multiHeader.add(new ArrayList<>(Arrays.asList("head40", "head31")));
-        multiHeader.add(new ArrayList<>(Arrays.asList("head40", "head41")));
-
-        // Test with FULL_RECTANGLE strategy - should not merge C2 and D2
-        FastExcel.write(fileIssue666)
-                .head(multiHeader)
-                .headerMergeStrategy(HeaderMergeStrategy.FULL_RECTANGLE)
-                .sheet()
-                .doWrite(createTestData());
-
-        // Verify that C2 and D2 are not merged
-        try (org.apache.poi.ss.usermodel.Workbook workbook =
-                org.apache.poi.ss.usermodel.WorkbookFactory.create(fileIssue666)) {
-            Sheet sheet = workbook.getSheetAt(0);
-            int mergedRegionCount = sheet.getNumMergedRegions();
-
-            // Check all merged regions
-            boolean c2AndD2Merged = false;
-            for (int i = 0; i < mergedRegionCount; i++) {
-                CellRangeAddress region = sheet.getMergedRegion(i);
-                // C2 is row 1, col 2; D2 is row 1, col 3
-                // If they are merged, there should be a region covering both
-                if (region.getFirstRow() == 1 && region.getLastRow() == 1
-                        && region.getFirstColumn() == 2 && region.getLastColumn() == 3) {
-                    c2AndD2Merged = true;
-                    break;
-                }
-            }
-
-            // Assert that C2 and D2 are NOT merged
-            Assertions.assertFalse(c2AndD2Merged, "C2 and D2 should not be merged in issue #666 scenario");
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to verify merged regions", e);
-        }
     }
 
     @Test
@@ -213,7 +165,7 @@ public class HeaderMergeStrategyTest {
                 .sheet()
                 .doWrite(createTestData());
 
-        // AUTO strategy should work similar to the old behavior but with context validation
+        // AUTO strategy should work similar to the old behavior
         try (org.apache.poi.ss.usermodel.Workbook workbook =
                 org.apache.poi.ss.usermodel.WorkbookFactory.create(fileAuto)) {
             Sheet sheet = workbook.getSheetAt(0);

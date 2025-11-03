@@ -181,7 +181,7 @@ The `headerMergeStrategy` parameter provides fine-grained control over how heade
 - **HORIZONTAL_ONLY**: Only merges cells horizontally (same row).
 - **VERTICAL_ONLY**: Only merges cells vertically (same column).
 - **FULL_RECTANGLE**: Only merges complete rectangular regions where all cells have the same name.
-- **AUTO**: Automatic merging (default behavior for backward compatibility), with improved context validation to prevent incorrect merges.
+- **AUTO**: Automatic merging (default behavior for backward compatibility).
 
 **Example**:
 ```java
