@@ -152,7 +152,8 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
                     for (int k = i + 1; k < headList.size(); k++) {
                         String key = k + "-" + j;
                         if (headList.get(k).getHeadNameList().size() > j
-                                && Objects.equals(headList.get(k).getHeadNameList().get(j), headName)
+                                && Objects.equals(
+                                        headList.get(k).getHeadNameList().get(j), headName)
                                 && !alreadyRangeSet.contains(key)) {
                             alreadyRangeSet.add(key);
                             lastCol = k;
@@ -174,7 +175,8 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
                         for (int l = i; l <= lastCol; l++) {
                             String key = l + "-" + k;
                             if (headList.get(l).getHeadNameList().size() <= k
-                                    || !Objects.equals(headList.get(l).getHeadNameList().get(k), headName)
+                                    || !Objects.equals(
+                                            headList.get(l).getHeadNameList().get(k), headName)
                                     || alreadyRangeSet.contains(key)) {
                                 canMerge = false;
                                 break;
@@ -210,7 +212,10 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
                 // Add merge range if it's larger than a single cell
                 if (j != lastRow || i != lastCol) {
                     cellRangeList.add(new CellRange(
-                            j, lastRow, head.getColumnIndex(), headList.get(lastCol).getColumnIndex()));
+                            j,
+                            lastRow,
+                            head.getColumnIndex(),
+                            headList.get(lastCol).getColumnIndex()));
                 }
             }
         }

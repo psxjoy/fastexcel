@@ -69,7 +69,8 @@ public class HeaderMergeStrategyTest {
         try (org.apache.poi.ss.usermodel.Workbook workbook =
                 org.apache.poi.ss.usermodel.WorkbookFactory.create(fileNone)) {
             Sheet sheet = workbook.getSheetAt(0);
-            Assertions.assertEquals(0, sheet.getNumMergedRegions(), "NONE strategy should not create any merged regions");
+            Assertions.assertEquals(
+                    0, sheet.getNumMergedRegions(), "NONE strategy should not create any merged regions");
         } catch (Exception e) {
             throw new RuntimeException("Failed to verify merged regions", e);
         }
@@ -93,7 +94,9 @@ public class HeaderMergeStrategyTest {
             // All merged regions should be horizontal only (same row)
             for (int i = 0; i < mergedRegionCount; i++) {
                 CellRangeAddress region = sheet.getMergedRegion(i);
-                Assertions.assertEquals(region.getFirstRow(), region.getLastRow(),
+                Assertions.assertEquals(
+                        region.getFirstRow(),
+                        region.getLastRow(),
                         "HORIZONTAL_ONLY strategy should only merge cells in the same row");
             }
         } catch (Exception e) {
@@ -119,7 +122,9 @@ public class HeaderMergeStrategyTest {
             // All merged regions should be vertical only (same column)
             for (int i = 0; i < mergedRegionCount; i++) {
                 CellRangeAddress region = sheet.getMergedRegion(i);
-                Assertions.assertEquals(region.getFirstColumn(), region.getLastColumn(),
+                Assertions.assertEquals(
+                        region.getFirstColumn(),
+                        region.getLastColumn(),
                         "VERTICAL_ONLY strategy should only merge cells in the same column");
             }
         } catch (Exception e) {
@@ -203,4 +208,3 @@ public class HeaderMergeStrategyTest {
         return data;
     }
 }
-

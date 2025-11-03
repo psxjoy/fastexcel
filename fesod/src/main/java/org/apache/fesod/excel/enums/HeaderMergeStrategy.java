@@ -56,4 +56,3 @@ public enum HeaderMergeStrategy {
      */
     AUTO
 }
-
