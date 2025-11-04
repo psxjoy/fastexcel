@@ -186,11 +186,11 @@ public class HeaderMergeStrategyTest {
      */
     private List<List<String>> createTestHead() {
         List<List<String>> head = new ArrayList<>();
-        // Row 0: ["A", "A", "B"]
+        // Columns 0-2 with row 0: ["A"], ["A"], ["B"]
         head.add(new ArrayList<>(Arrays.asList("A")));
         head.add(new ArrayList<>(Arrays.asList("A")));
         head.add(new ArrayList<>(Arrays.asList("B")));
-        // Row 1: ["A1", "A2", "B1"]
+        // Columns 0-2 with row 0 and row 1: ["A", "A1"], ["A", "A2"], ["B", "B1"]
         head.add(new ArrayList<>(Arrays.asList("A", "A1")));
         head.add(new ArrayList<>(Arrays.asList("A", "A2")));
         head.add(new ArrayList<>(Arrays.asList("B", "B1")));
