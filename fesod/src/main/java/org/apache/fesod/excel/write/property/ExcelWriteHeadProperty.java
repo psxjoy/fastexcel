@@ -185,7 +185,7 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
 
                         // For AUTO strategy, also check context consistency
                         if (canMerge && mergeStrategy == HeaderMergeStrategy.AUTO) {
-                            canMerge = canMergeVertically(headList, j, k, i, lastCol, headName);
+                            canMerge = canMergeVertically(headList, j, k, i, lastCol);
                         }
 
                         if (canMerge) {
@@ -230,11 +230,9 @@ public class ExcelWriteHeadProperty extends ExcelHeadProperty {
      * @param row2        Second row index
      * @param startCol    Start column index
      * @param endCol      End column index
-     * @param cellName    The cell name to merge
      * @return true if the rows can be merged
      */
-    private boolean canMergeVertically(
-            List<Head> headList, int row1, int row2, int startCol, int endCol, String cellName) {
+    private boolean canMergeVertically(List<Head> headList, int row1, int row2, int startCol, int endCol) {
         // Check if there's a row above that provides context
         if (row1 > 0) {
             // Check if all cells in the range have the same context above
