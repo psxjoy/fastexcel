@@ -203,7 +203,7 @@ public class HeaderMergeStrategyTest {
     private List<List<Object>> createTestData() {
         List<List<Object>> data = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            data.add(new ArrayList<>(Arrays.asList("A" + i, "B" + i, "C" + i)));
+            data.add(new ArrayList<>(Arrays.asList("A" + i, "B" + i, "C" + i, "D" + i, "E" + i, "F" + i)));
         }
         return data;
     }
