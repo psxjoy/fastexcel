@@ -41,8 +41,8 @@ public class SimpleDataSheetNameListener extends AnalysisEventListener<SimpleDat
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
-        Assertions.assertEquals(list.get(0).getName(), "张三");
+        Assertions.assertEquals(1, list.size());
+        Assertions.assertEquals("张三", list.get(0).getName());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

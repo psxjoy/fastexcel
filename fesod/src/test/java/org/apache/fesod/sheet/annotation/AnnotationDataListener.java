@@ -44,14 +44,14 @@ public class AnnotationDataListener extends AnalysisEventListener<AnnotationData
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         AnnotationData data = list.get(0);
         try {
             Assertions.assertEquals(data.getDate(), DateUtils.parseDate("2020-01-01 01:01:01"));
         } catch (ParseException e) {
             throw new ExcelCommonException("Test Exception", e);
         }
-        Assertions.assertEquals(data.getNumber(), 99.99, 0.00);
+        Assertions.assertEquals(99.99, data.getNumber(), 0.00);
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

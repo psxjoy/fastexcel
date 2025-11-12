@@ -110,7 +110,7 @@ public class FillAnnotationDataTest {
                 XSSFSheet xssfSheet = (XSSFSheet) sheet;
                 List<XSSFShape> shapeList = xssfSheet.getDrawingPatriarch().getShapes();
                 XSSFShape shape0 = shapeList.get(0);
-                Assertions.assertTrue(shape0 instanceof XSSFPicture);
+                Assertions.assertInstanceOf(XSSFPicture.class, shape0);
                 XSSFPicture picture0 = (XSSFPicture) shape0;
                 CTMarker ctMarker0 = picture0.getPreferredSize().getFrom();
                 Assertions.assertEquals(1, ctMarker0.getRow());
@@ -119,7 +119,7 @@ public class FillAnnotationDataTest {
                 HSSFSheet hssfSheet = (HSSFSheet) sheet;
                 List<HSSFShape> shapeList = hssfSheet.getDrawingPatriarch().getChildren();
                 HSSFShape shape0 = shapeList.get(0);
-                Assertions.assertTrue(shape0 instanceof HSSFPicture);
+                Assertions.assertInstanceOf(HSSFPicture.class, shape0);
                 HSSFPicture picture0 = (HSSFPicture) shape0;
                 HSSFClientAnchor anchor = (HSSFClientAnchor) picture0.getAnchor();
                 Assertions.assertEquals(1, anchor.getRow1());

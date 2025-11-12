@@ -42,12 +42,12 @@ public class AnnotationIndexAndNameDataListener extends AnalysisEventListener<An
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         AnnotationIndexAndNameData data = list.get(0);
-        Assertions.assertEquals(data.getIndex0(), "第0个");
-        Assertions.assertEquals(data.getIndex1(), "第1个");
-        Assertions.assertEquals(data.getIndex2(), "第2个");
-        Assertions.assertEquals(data.getIndex4(), "第4个");
+        Assertions.assertEquals("第0个", data.getIndex0());
+        Assertions.assertEquals("第1个", data.getIndex1());
+        Assertions.assertEquals("第2个", data.getIndex2());
+        Assertions.assertEquals("第4个", data.getIndex4());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

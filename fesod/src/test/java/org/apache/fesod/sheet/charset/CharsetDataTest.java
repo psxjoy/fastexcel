@@ -108,7 +108,7 @@ public class CharsetDataTest {
 
                     @Override
                     public void doAfterAllAnalysed(AnalysisContext context) {
-                        Assertions.assertEquals(dataList.size(), 10);
+                        Assertions.assertEquals(10, dataList.size());
                         CharsetData charsetData = dataList.get(0);
                         Assertions.assertEquals("姓名0", charsetData.getName());
                         Assertions.assertEquals(0, (long) charsetData.getAge());

@@ -44,22 +44,22 @@ public class ConverterDataListener extends AnalysisEventListener<ConverterReadDa
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         ConverterReadData data = list.get(0);
         Assertions.assertEquals(TestUtil.TEST_DATE, data.getDate());
         Assertions.assertEquals(TestUtil.TEST_LOCAL_DATE, data.getLocalDate());
         Assertions.assertEquals(TestUtil.TEST_LOCAL_DATE_TIME, data.getLocalDateTime());
-        Assertions.assertEquals(data.getBooleanData(), Boolean.TRUE);
+        Assertions.assertEquals(Boolean.TRUE, data.getBooleanData());
         Assertions.assertEquals(data.getBigDecimal().doubleValue(), BigDecimal.ONE.doubleValue(), 0.0);
         Assertions.assertEquals(data.getBigInteger().intValue(), BigInteger.ONE.intValue(), 0.0);
-        Assertions.assertEquals((long) data.getLongData(), 1L);
-        Assertions.assertEquals((long) data.getIntegerData(), 1L);
-        Assertions.assertEquals((long) data.getShortData(), 1L);
-        Assertions.assertEquals((long) data.getByteData(), 1L);
-        Assertions.assertEquals(data.getDoubleData(), 1.0, 0.0);
-        Assertions.assertEquals(data.getFloatData(), (float) 1.0, 0.0);
-        Assertions.assertEquals(data.getString(), "测试");
-        Assertions.assertEquals(data.getCellData().getStringValue(), "自定义");
+        Assertions.assertEquals(1L, (long) data.getLongData());
+        Assertions.assertEquals(1L, (long) data.getIntegerData());
+        Assertions.assertEquals(1L, (long) data.getShortData());
+        Assertions.assertEquals(1L, (long) data.getByteData());
+        Assertions.assertEquals(1.0, data.getDoubleData(), 0.0);
+        Assertions.assertEquals((float) 1.0, data.getFloatData(), 0.0);
+        Assertions.assertEquals("测试", data.getString());
+        Assertions.assertEquals("自定义", data.getCellData().getStringValue());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

@@ -54,17 +54,17 @@ public class ExceptionDataListener extends AnalysisEventListener<ExceptionData> 
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 8);
-        Assertions.assertEquals(list.get(0).getName(), "姓名0");
-        Assertions.assertEquals((int) (context.readSheetHolder().getSheetNo()), 0);
+        Assertions.assertEquals(8, list.size());
+        Assertions.assertEquals("姓名0", list.get(0).getName());
+        Assertions.assertEquals(0, (int) (context.readSheetHolder().getSheetNo()));
         Assertions.assertEquals(
+                "姓名",
                 context.readSheetHolder()
                         .getExcelReadHeadProperty()
                         .getHeadMap()
                         .get(0)
                         .getHeadNameList()
-                        .get(0),
-                "姓名");
+                        .get(0));
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

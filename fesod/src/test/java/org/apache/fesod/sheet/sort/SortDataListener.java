@@ -41,7 +41,7 @@ public class SortDataListener extends AnalysisEventListener<SortData> {
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         SortData sortData = list.get(0);
         Assertions.assertEquals("column1", sortData.getColumn1());
         Assertions.assertEquals("column2", sortData.getColumn2());

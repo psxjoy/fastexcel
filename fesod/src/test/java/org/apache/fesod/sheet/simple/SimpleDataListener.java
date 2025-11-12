@@ -48,7 +48,7 @@ public class SimpleDataListener extends AnalysisEventListener<SimpleData> {
     @Override
     public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
         log.debug("Head is:{}", JSON.toJSONString(headMap));
-        Assertions.assertEquals(headMap.get(0), "姓名");
+        Assertions.assertEquals("姓名", headMap.get(0));
     }
 
     /**
@@ -74,17 +74,17 @@ public class SimpleDataListener extends AnalysisEventListener<SimpleData> {
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
         // check the results
-        Assertions.assertEquals(list.size(), 10);
-        Assertions.assertEquals(list.get(0).getName(), "姓名0");
-        Assertions.assertEquals((int) (context.readSheetHolder().getSheetNo()), 0);
+        Assertions.assertEquals(10, list.size());
+        Assertions.assertEquals("姓名0", list.get(0).getName());
+        Assertions.assertEquals(0, (int) (context.readSheetHolder().getSheetNo()));
         Assertions.assertEquals(
+                "姓名",
                 context.readSheetHolder()
                         .getExcelReadHeadProperty()
                         .getHeadMap()
                         .get(0)
                         .getHeadNameList()
-                        .get(0),
-                "姓名");
+                        .get(0));
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

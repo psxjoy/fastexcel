@@ -47,7 +47,7 @@ public class ReadAllConverterDataListener extends AnalysisEventListener<ReadAllC
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         ReadAllConverterData data = list.get(0);
         Assertions.assertEquals(data.getBigDecimalBoolean().doubleValue(), BigDecimal.ONE.doubleValue(), 0.0);
         Assertions.assertEquals(data.getBigDecimalNumber().doubleValue(), BigDecimal.ONE.doubleValue(), 0.0);
@@ -58,9 +58,9 @@ public class ReadAllConverterDataListener extends AnalysisEventListener<ReadAllC
         Assertions.assertTrue(data.getBooleanBoolean());
         Assertions.assertTrue(data.getBooleanNumber());
         Assertions.assertTrue(data.getBooleanString());
-        Assertions.assertEquals((long) data.getByteBoolean(), 1L);
-        Assertions.assertEquals((long) data.getByteNumber(), 1L);
-        Assertions.assertEquals((long) data.getByteString(), 1L);
+        Assertions.assertEquals(1L, (long) data.getByteBoolean());
+        Assertions.assertEquals(1L, (long) data.getByteNumber());
+        Assertions.assertEquals(1L, (long) data.getByteString());
         try {
             Assertions.assertEquals(data.getDateNumber(), DateUtils.parseDate("2020-01-01 01:01:01"));
             Assertions.assertEquals(data.getDateString(), DateUtils.parseDate("2020-01-01 01:01:01"));
@@ -71,32 +71,32 @@ public class ReadAllConverterDataListener extends AnalysisEventListener<ReadAllC
                 data.getLocalDateTimeNumber(), DateUtils.parseLocalDateTime("2020-01-01 01:01:01", null, null));
         Assertions.assertEquals(
                 data.getLocalDateTimeString(), DateUtils.parseLocalDateTime("2020-01-01 01:01:01", null, null));
-        Assertions.assertEquals(data.getDoubleBoolean(), 1.0, 0.0);
-        Assertions.assertEquals(data.getDoubleNumber(), 1.0, 0.0);
-        Assertions.assertEquals(data.getDoubleString(), 1.0, 0.0);
-        Assertions.assertEquals(data.getFloatBoolean(), (float) 1.0, 0.0);
-        Assertions.assertEquals(data.getFloatNumber(), (float) 1.0, 0.0);
-        Assertions.assertEquals(data.getFloatString(), (float) 1.0, 0.0);
-        Assertions.assertEquals((long) data.getIntegerBoolean(), 1L);
-        Assertions.assertEquals((long) data.getIntegerNumber(), 1L);
-        Assertions.assertEquals((long) data.getIntegerString(), 1L);
-        Assertions.assertEquals((long) data.getLongBoolean(), 1L);
-        Assertions.assertEquals((long) data.getLongNumber(), 1L);
-        Assertions.assertEquals((long) data.getLongString(), 1L);
-        Assertions.assertEquals((long) data.getShortBoolean(), 1L);
-        Assertions.assertEquals((long) data.getShortNumber(), 1L);
-        Assertions.assertEquals((long) data.getShortString(), 1L);
-        Assertions.assertEquals(data.getStringBoolean().toLowerCase(), "true");
-        Assertions.assertEquals(data.getStringString(), "测试");
-        Assertions.assertEquals(data.getStringError(), "#VALUE!");
+        Assertions.assertEquals(1.0, data.getDoubleBoolean(), 0.0);
+        Assertions.assertEquals(1.0, data.getDoubleNumber(), 0.0);
+        Assertions.assertEquals(1.0, data.getDoubleString(), 0.0);
+        Assertions.assertEquals((float) 1.0, data.getFloatBoolean(), 0.0);
+        Assertions.assertEquals((float) 1.0, data.getFloatNumber(), 0.0);
+        Assertions.assertEquals((float) 1.0, data.getFloatString(), 0.0);
+        Assertions.assertEquals(1L, (long) data.getIntegerBoolean());
+        Assertions.assertEquals(1L, (long) data.getIntegerNumber());
+        Assertions.assertEquals(1L, (long) data.getIntegerString());
+        Assertions.assertEquals(1L, (long) data.getLongBoolean());
+        Assertions.assertEquals(1L, (long) data.getLongNumber());
+        Assertions.assertEquals(1L, (long) data.getLongString());
+        Assertions.assertEquals(1L, (long) data.getShortBoolean());
+        Assertions.assertEquals(1L, (long) data.getShortNumber());
+        Assertions.assertEquals(1L, (long) data.getShortString());
+        Assertions.assertEquals("true", data.getStringBoolean().toLowerCase());
+        Assertions.assertEquals("测试", data.getStringString());
+        Assertions.assertEquals("#VALUE!", data.getStringError());
         if (context.readWorkbookHolder().getExcelType() != ExcelTypeEnum.CSV) {
             Assertions.assertEquals("2020-1-1 1:01", data.getStringNumberDate());
         } else {
             Assertions.assertEquals("2020-01-01 01:01:01", data.getStringNumberDate());
         }
         double doubleStringFormulaNumber = new BigDecimal(data.getStringFormulaNumber()).doubleValue();
-        Assertions.assertEquals(doubleStringFormulaNumber, 2.0, 0.0);
-        Assertions.assertEquals(data.getStringFormulaString(), "1测试");
+        Assertions.assertEquals(2.0, doubleStringFormulaNumber, 0.0);
+        Assertions.assertEquals("1测试", data.getStringFormulaString());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

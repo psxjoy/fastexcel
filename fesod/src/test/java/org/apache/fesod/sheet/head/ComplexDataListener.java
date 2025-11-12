@@ -42,9 +42,9 @@ public class ComplexDataListener extends AnalysisEventListener<ComplexHeadData> 
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         ComplexHeadData data = list.get(0);
-        Assertions.assertEquals(data.getString4(), "字符串4");
+        Assertions.assertEquals("字符串4", data.getString4());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

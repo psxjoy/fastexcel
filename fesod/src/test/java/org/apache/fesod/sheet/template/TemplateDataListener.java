@@ -42,9 +42,9 @@ public class TemplateDataListener extends AnalysisEventListener<TemplateData> {
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 2);
-        Assertions.assertEquals(list.get(0).getString0(), "字符串0");
-        Assertions.assertEquals(list.get(1).getString0(), "字符串1");
+        Assertions.assertEquals(2, list.size());
+        Assertions.assertEquals("字符串0", list.get(0).getString0());
+        Assertions.assertEquals("字符串1", list.get(1).getString0());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

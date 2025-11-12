@@ -59,8 +59,9 @@ class ExcelAnalyserOldBiffTest {
         Assertions.assertEquals(
                 ExcelTypeEnum.XLS,
                 analyser.analysisContext().readWorkbookHolder().getExcelType());
-        Assertions.assertTrue(
-                analyser.excelExecutor() instanceof ExcelAnalyserImpl.NoopExcelReadExecutor,
+        Assertions.assertInstanceOf(
+                ExcelAnalyserImpl.NoopExcelReadExecutor.class,
+                analyser.excelExecutor(),
                 "Executor should be NoopExcelReadExecutor for old BIFF");
     }
 
@@ -84,8 +85,9 @@ class ExcelAnalyserOldBiffTest {
         Assertions.assertEquals(
                 ExcelTypeEnum.XLS,
                 analyser.analysisContext().readWorkbookHolder().getExcelType());
-        Assertions.assertTrue(
-                analyser.excelExecutor() instanceof ExcelAnalyserImpl.NoopExcelReadExecutor,
+        Assertions.assertInstanceOf(
+                ExcelAnalyserImpl.NoopExcelReadExecutor.class,
+                analyser.excelExecutor(),
                 "Executor should be NoopExcelReadExecutor for old BIFF");
     }
 }

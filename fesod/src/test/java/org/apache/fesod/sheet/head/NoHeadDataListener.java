@@ -42,9 +42,9 @@ public class NoHeadDataListener extends AnalysisEventListener<NoHeadData> {
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         NoHeadData data = list.get(0);
-        Assertions.assertEquals(data.getString(), "字符串0");
+        Assertions.assertEquals("字符串0", data.getString());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

@@ -48,9 +48,9 @@ public class LargeDataListener extends AnalysisEventListener<LargeData> {
     public void doAfterAllAnalysed(AnalysisContext context) {
         log.info("Large row count:{}", count);
         if (context.readWorkbookHolder().getExcelType() != ExcelTypeEnum.CSV) {
-            Assertions.assertEquals(count, 464509);
+            Assertions.assertEquals(464509, count);
         } else {
-            Assertions.assertEquals(count, 499999);
+            Assertions.assertEquals(499999, count);
         }
     }
 }

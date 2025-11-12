@@ -209,7 +209,7 @@ public class FillDataTest {
         }
 
         List<Object> list = FastExcel.read(file).sheet().headRowNumber(0).doReadSync();
-        Assertions.assertEquals(list.size(), 5L);
+        Assertions.assertEquals(5L, list.size());
         Map<String, String> map0 = (Map<String, String>) list.get(0);
         Assertions.assertEquals("Zhang San", map0.get(2));
     }
@@ -230,7 +230,7 @@ public class FillDataTest {
             excelWriter.fill(map, writeSheet);
         }
         List<Object> list = FastExcel.read(file).sheet().headRowNumber(3).doReadSync();
-        Assertions.assertEquals(list.size(), 21L);
+        Assertions.assertEquals(21L, list.size());
         Map<String, String> map19 = (Map<String, String>) list.get(19);
         Assertions.assertEquals("Zhang San", map19.get(0));
     }

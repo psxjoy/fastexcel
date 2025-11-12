@@ -53,7 +53,7 @@ public class ListHeadDataListener implements ReadListener<Map<Integer, String>> 
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         Map<Integer, String> data = list.get(0);
         Assertions.assertEquals("字符串0", data.get(0));
         Assertions.assertEquals("1", data.get(1));

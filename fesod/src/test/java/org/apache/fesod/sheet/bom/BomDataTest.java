@@ -96,7 +96,7 @@ public class BomDataTest {
 
                     @Override
                     public void doAfterAllAnalysed(AnalysisContext context) {
-                        Assertions.assertEquals(dataList.size(), 10);
+                        Assertions.assertEquals(10, dataList.size());
                         BomData bomData = dataList.get(0);
                         Assertions.assertEquals("姓名0", bomData.getName());
                         Assertions.assertEquals(20, (long) bomData.getAge());
@@ -125,7 +125,7 @@ public class BomDataTest {
 
                     @Override
                     public void doAfterAllAnalysed(AnalysisContext context) {
-                        Assertions.assertEquals(dataList.size(), 10);
+                        Assertions.assertEquals(10, dataList.size());
                         BomData bomData = dataList.get(0);
                         Assertions.assertEquals("姓名0", bomData.getName());
                         Assertions.assertEquals(20L, (long) bomData.getAge());

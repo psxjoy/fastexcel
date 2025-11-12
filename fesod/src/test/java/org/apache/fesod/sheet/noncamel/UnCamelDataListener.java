@@ -38,12 +38,12 @@ public class UnCamelDataListener extends AnalysisEventListener<UnCamelData> {
     @Override
     public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
         log.debug("Head is:{}", JSON.toJSONString(headMap));
-        Assertions.assertEquals(headMap.get(0), "string1");
-        Assertions.assertEquals(headMap.get(1), "string2");
-        Assertions.assertEquals(headMap.get(2), "STring3");
-        Assertions.assertEquals(headMap.get(3), "STring4");
-        Assertions.assertEquals(headMap.get(4), "STRING5");
-        Assertions.assertEquals(headMap.get(5), "STRing6");
+        Assertions.assertEquals("string1", headMap.get(0));
+        Assertions.assertEquals("string2", headMap.get(1));
+        Assertions.assertEquals("STring3", headMap.get(2));
+        Assertions.assertEquals("STring4", headMap.get(3));
+        Assertions.assertEquals("STRING5", headMap.get(4));
+        Assertions.assertEquals("STRing6", headMap.get(5));
     }
 
     @Override
@@ -53,14 +53,14 @@ public class UnCamelDataListener extends AnalysisEventListener<UnCamelData> {
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 10);
+        Assertions.assertEquals(10, list.size());
         UnCamelData unCamelData = list.get(0);
-        Assertions.assertEquals(unCamelData.getString1(), "string1");
-        Assertions.assertEquals(unCamelData.getString2(), "string2");
-        Assertions.assertEquals(unCamelData.getSTring3(), "string3");
-        Assertions.assertEquals(unCamelData.getSTring4(), "string4");
-        Assertions.assertEquals(unCamelData.getSTRING5(), "string5");
-        Assertions.assertEquals(unCamelData.getSTRing6(), "string6");
+        Assertions.assertEquals("string1", unCamelData.getString1());
+        Assertions.assertEquals("string2", unCamelData.getString2());
+        Assertions.assertEquals("string3", unCamelData.getSTring3());
+        Assertions.assertEquals("string4", unCamelData.getSTring4());
+        Assertions.assertEquals("string5", unCamelData.getSTRING5());
+        Assertions.assertEquals("string6", unCamelData.getSTRing6());
         log.debug("First row:{}", JSON.toJSONString(list.get(0)));
     }
 }

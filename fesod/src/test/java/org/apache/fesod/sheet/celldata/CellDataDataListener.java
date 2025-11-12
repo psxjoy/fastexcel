@@ -43,15 +43,15 @@ public class CellDataDataListener extends AnalysisEventListener<CellDataReadData
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        Assertions.assertEquals(list.size(), 1);
+        Assertions.assertEquals(1, list.size());
         CellDataReadData cellDataData = list.get(0);
 
         Assertions.assertEquals("2020年01月01日", cellDataData.getDate().getData());
-        Assertions.assertEquals((long) cellDataData.getInteger1().getData(), 2L);
-        Assertions.assertEquals((long) cellDataData.getInteger2(), 2L);
+        Assertions.assertEquals(2L, (long) cellDataData.getInteger1().getData());
+        Assertions.assertEquals(2L, (long) cellDataData.getInteger2());
         if (context.readWorkbookHolder().getExcelType() != ExcelTypeEnum.CSV) {
             Assertions.assertEquals(
-                    cellDataData.getFormulaValue().getFormulaData().getFormulaValue(), "B2+C2");
+                    "B2+C2", cellDataData.getFormulaValue().getFormulaData().getFormulaValue());
         } else {
             Assertions.assertNull(cellDataData.getFormulaValue().getData());
         }

@@ -207,9 +207,9 @@ public class SimpleDataTest {
     private void synchronousRead(File file) {
         // Synchronous read file
         List<Object> list = FastExcel.read(file).head(SimpleData.class).sheet().doReadSync();
-        Assertions.assertEquals(list.size(), 10);
-        Assertions.assertTrue(list.get(0) instanceof SimpleData);
-        Assertions.assertEquals(((SimpleData) list.get(0)).getName(), "姓名0");
+        Assertions.assertEquals(10, list.size());
+        Assertions.assertInstanceOf(SimpleData.class, list.get(0));
+        Assertions.assertEquals("姓名0", ((SimpleData) list.get(0)).getName());
     }
 
     /**
