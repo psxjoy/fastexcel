@@ -523,7 +523,7 @@ public class WriteTest {
                 .sheet("模板")
                 .doWrite(data());
 
-        // 方法2: 使用FastExcel的方式完全自己写 不太推荐 尽量使用已有策略
+        // 方法2: 使用Fesod的方式完全自己写 不太推荐 尽量使用已有策略
         // @since 3.0.0-beta2
         fileName = TestFileUtil.getPath() + "handlerStyleWrite" + System.currentTimeMillis() + ".xlsx";
         FesodSheet.write(fileName, DemoData.class)
