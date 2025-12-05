@@ -225,13 +225,6 @@ const config = {
             }),
         ],
     ],
-    scripts: [
-        {
-            src: 'https://plausible.yuanzhixiang.com/js/script.js',
-            defer: true,
-            'data-domain': 'fesod.apache.org'
-        }
-    ],
     headTags: [],
     markdown: {
         format: 'md',
