@@ -33,6 +33,11 @@
     <packaging>pom</packaging>
     <name>Fesod Distribution</name>
 
+
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.fesod</groupId>
