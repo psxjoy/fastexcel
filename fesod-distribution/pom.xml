@@ -44,11 +44,6 @@
             <artifactId>fesod-sheet</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.fesod</groupId>
-            <artifactId>fesod-sheet-examples</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
