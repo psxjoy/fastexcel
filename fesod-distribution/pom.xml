@@ -31,23 +31,23 @@
 
     <artifactId>fesod-distribution</artifactId>
     <packaging>pom</packaging>
-    <name>fesod-distribution</name>
+    <name>Fesod Distribution</name>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.fesod</groupId>
             <artifactId>fesod-common</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.fesod</groupId>
             <artifactId>fesod-sheet</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.fesod</groupId>
             <artifactId>fesod-sheet-examples</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
