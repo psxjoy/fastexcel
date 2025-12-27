@@ -546,6 +546,11 @@
                         <exclude>.git/**</exclude>
                         <exclude>.github/**</exclude>
                         <exclude>**/target/**</exclude>
+                        <exclude>**/*.csv</exclude>
+                        <exclude>**/*.xls</exclude>
+                        <exclude>**/*.xlsx</exclude>
+                        <exclude>**/*.jpg</exclude>
+                        <exclude>**/licenses/*.txt</exclude>
                     </excludes>
                 </configuration>
             </plugin>
