@@ -19,8 +19,8 @@
 
 package org.apache.fesod.sheet.temp;
 
-import cn.idev.excel.support.cglib.beans.BeanMap;
-import cn.idev.excel.support.cglib.core.DebuggingClassWriter;
+import org.apache.fesod.shaded.cglib.beans.BeanMap;
+import org.apache.fesod.shaded.cglib.core.DebuggingClassWriter;
 import com.alibaba.fastjson2.JSON;
 import java.nio.file.Path;
 import java.util.List;
