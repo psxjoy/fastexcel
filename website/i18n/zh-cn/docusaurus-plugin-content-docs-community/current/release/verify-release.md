@@ -163,7 +163,7 @@ find . -name rat.txt -print0 | xargs -0 -I file cat file | grep "Unapproved Lice
 * [ ] **NOTICE 文件：**
 * * 存在
 * * 年份正确 (例如包含 2025/2026)。
-* * 如果引入了其他必须在 NOTICE 中声明的依赖，需确认已包含。=
+* * 如果引入了其他必须在 NOTICE 中声明的依赖，需确认已包含。
 
 * [ ] **DISCLAIMER 文件：** 存在（孵化项目必须存在）。
 
