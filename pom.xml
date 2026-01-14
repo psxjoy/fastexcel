@@ -532,6 +532,10 @@
                         <exclude>website/**</exclude>
                         <exclude>logo.svg</exclude>
                         <exclude>**/*.md</exclude>
+                        <exclude>dist/**</exclude>
+                        <exclude>**/*.xlsx</exclude>
+                        <exclude>**/*.xls</exclude>
+                        <exclude>**/*.csv</exclude>
                         <exclude>.git/**</exclude>
                         <exclude>.github/**</exclude>
                         <exclude>**/target/**</exclude>
