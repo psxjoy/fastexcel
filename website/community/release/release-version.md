@@ -188,6 +188,7 @@ At this point, the Fesod SDK is published to the [Staging Repository](https://re
 Note: If the close operation fails, it is likely because the public key corresponding to the signing key cannot be found on keys.openpgp.org. Please check via [OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/).
 
 ### 2.2.2 Package Source
+
 :::caution Note
 Do NOT run the release process in your daily working directory!
 :::
