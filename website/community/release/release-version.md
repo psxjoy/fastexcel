@@ -188,6 +188,15 @@ At this point, the Fesod SDK is published to the [Staging Repository](https://re
 Note: If the close operation fails, it is likely because the public key corresponding to the signing key cannot be found on keys.openpgp.org. Please check via [OpenPGP Keyserver (ubuntu.com)](https://keyserver.ubuntu.com/).
 
 ### 2.2.2 Package Source
+:::caution Note
+Do NOT run the release process in your daily working directory!
+:::
+
+> Local files such as `node_modules`, IDE configurations (e.g., `.idea`, `.vscode`), or leftover empty directories from refactoring can accidentally be packaged into the `source-release.zip`. This will cause compliance issues (e.g., distributing unauthorized binaries) and lead to vote failures.
+
+You **MUST** perform the release process in a **fresh git clone** to ensure the artifacts are reproducible and clean.
+
+**Note**: Do not open this directory with an IDE (like IntelliJ or VS Code) immediately, as it may generate configuration files or compilation caches. Run the Maven release commands directly from the terminal first.
 
 First, confirm that the current codebase is ready for release.
 
