@@ -5,7 +5,7 @@ title: '下载'
 
 这是 Apache Fesod (Incubating) 的官方下载页面。Apache Fesod 提供可从 ASF 发布站点下载的源码发布。二进制构件可通过 Maven 中央仓库获取。
 
-# 如何使用 Apache Fesod
+# 如何使用 Apache Fesod (Incubating)
 
 ## 使用 Maven 中央仓库（推荐）
 

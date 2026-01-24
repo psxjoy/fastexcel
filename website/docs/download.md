@@ -5,7 +5,7 @@ title: 'Download'
 
 Here is the Apache Fesod (Incubating) official download page. Apache Fesod provides source releases that can be downloaded from the ASF distribution site. Binary artifacts are available through Maven Central.
 
-# How to Use Apache Fesod
+# How to Use Apache Fesod (Incubating)
 
 ## Using Maven Central (Recommended)
 
