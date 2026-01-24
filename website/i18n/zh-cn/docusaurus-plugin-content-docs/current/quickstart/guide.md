@@ -9,16 +9,24 @@ title: '指南'
 
 下表列出了各版本 Fesod 基础库对 Java 语言版本最低要求的情况：
 
-| 版本    | jdk版本支持范围    | 备注 |
-|-------|--------------|----|
-| 1.3.x | jdk8 - jdk25 |    |
-| 1.2.x | jdk8 - jdk21 |    |
-| 1.1.x | jdk8 - jdk21 |    |
-| 1.0.x | jdk8 - jdk21 |    |
+| 版本                | jdk版本支持范围    | 备注              |
+|-------------------|--------------|--------------------|
+| 2.0.0-incubating  | jdk8 - jdk25 | 首个 Apache 孵化器版本 |
+| 1.3.x             | jdk8 - jdk25 | 非 Apache 版本     |
+| 1.2.x             | jdk8 - jdk21 | 非 Apache 版本     |
+| 1.1.x             | jdk8 - jdk21 | 非 Apache 版本     |
+| 1.0.x             | jdk8 - jdk21 | 非 Apache 版本     |
 
 我们强烈建议您使用最新版本的 Fesod，因为最新版本中的性能优化、BUG 修复和新功能都会让您的使用更加方便。
 
-> 当前 Fesod 底层使用 poi 作为基础包，如果您的项目中已经有 poi 相关组件，需要您手动排除 poi 的相关 jar 包。
+### 依赖说明
+
+Fesod 使用了以下核心依赖：
+- **Apache POI 5.5.1** - 用于 Excel 文件处理
+- **Apache Commons CSV 1.14.1** - 用于 CSV 文件支持
+- **Ehcache 3.9.11** - 用于缓存功能
+
+> 如果您的项目中已经有 POI 相关组件，可能需要手动排除 POI 的相关 jar 包以避免版本冲突。
 
 ## 版本更新
 
@@ -31,12 +39,37 @@ title: '指南'
 如果您使用 Maven 进行项目构建，请在 `pom.xml` 文件中引入以下配置：
 
 ```xml
-
 <dependency>
     <groupId>org.apache.fesod</groupId>
-    <artifactId>fesod</artifactId>
-    <version>版本号</version>
+    <artifactId>fesod-sheet</artifactId>
+    <version>2.0.0-incubating</version>
 </dependency>
+```
+
+### 可选：使用 BOM 管理版本
+
+为了更好地管理依赖版本，您可以使用 Fesod BOM：
+
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.fesod</groupId>
+            <artifactId>fesod-bom</artifactId>
+            <version>2.0.0-incubating</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+<dependencies>
+    <dependency>
+        <groupId>org.apache.fesod</groupId>
+        <artifactId>fesod-sheet</artifactId>
+        <!-- 版本号由 BOM 管理 -->
+    </dependency>
+</dependencies>
 ```
 
 ## Gradle
@@ -45,6 +78,6 @@ title: '指南'
 
 ```gradle
 dependencies {
-    implementation 'org.apache.fesod:fesod:版本号'
+    implementation 'org.apache.fesod:fesod-sheet:2.0.0-incubating'
 }
 ```

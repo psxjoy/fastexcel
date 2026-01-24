@@ -63,10 +63,9 @@ Apache Fesod (Incubating) 需要 **Java 1.8** 或更高版本。建议使用最�
 如果使用 Maven 进行项目构建，请在 `pom.xml` 文件中添加以下配置：
 
 ```xml
-
 <dependency>
     <groupId>org.apache.fesod</groupId>
-    <artifactId>fesod</artifactId>
+    <artifactId>fesod-sheet</artifactId>
     <version>version</version>
 </dependency>
 ```
@@ -77,7 +76,7 @@ Apache Fesod (Incubating) 需要 **Java 1.8** 或更高版本。建议使用最�
 
 ```gradle
 dependencies {
-    implementation 'org.apache.fesod:fesod:version'
+    implementation 'org.apache.fesod:fesod-sheet:version'
 }
 ```
 
