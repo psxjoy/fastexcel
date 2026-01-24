@@ -23,6 +23,7 @@ in the latest version will enhance your experience.
 ### Dependencies
 
 Fesod uses the following key dependencies:
+
 - **Apache POI 5.5.1** - For Excel file processing
 - **Apache Commons CSV 1.14.1** - For CSV file support
 - **Ehcache 3.9.11** - For caching functionality

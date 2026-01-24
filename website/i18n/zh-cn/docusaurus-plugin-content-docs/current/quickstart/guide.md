@@ -22,6 +22,7 @@ title: '指南'
 ### 依赖说明
 
 Fesod 使用了以下核心依赖：
+
 - **Apache POI 5.5.1** - 用于 Excel 文件处理
 - **Apache Commons CSV 1.14.1** - 用于 CSV 文件支持
 - **Ehcache 3.9.11** - 用于缓存功能
