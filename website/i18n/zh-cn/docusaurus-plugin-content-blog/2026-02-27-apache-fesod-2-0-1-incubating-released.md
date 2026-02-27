@@ -1,12 +1,12 @@
 ---
 title: "Apache Fesod (Incubating) 2.0.1-incubating 正式发布"
-description: "Apache Fesod 社区欣然宣布，Apache Fesod (Incubating) 2.0.1-incubating 版本正式发布！"
+description: "Apache Fesod (Incubating) 社区欣然宣布，Apache Fesod (Incubating) 2.0.1-incubating 版本正式发布！"
 authors: [psxjoy]
 tags: [announcement, release]
 date: 2026-02-27T00:00:00.000Z
 ---
 
-**2026年2月** —— Apache Fesod 社区欣然宣布，**Apache Fesod (Incubating) 2.0.1-incubating 版本正式发布！**
+**2026年2月** —— Apache Fesod (Incubating) 社区欣然宣布，**Apache Fesod (Incubating) 2.0.1-incubating 版本正式发布！**
 
 这不仅是一个技术版本的迭代，更是 Fesod 项目自加入 **Apache 软件基金会 (ASF)** 孵化器以来的**首个正式发布版本**。在过去的几个月中，社区成员共同完成了大量的合规性改造、架构重构以及功能增强，标志着 Fesod 已经完全准备好在 ASF 规范下开启高性能 Excel 处理的新篇章。
 
@@ -84,7 +84,7 @@ date: 2026-02-27T00:00:00.000Z
 
 ## 如何获取
 
-你可以通过以下渠道下载并体验全新的 Apache Fesod：
+你可以通过以下渠道下载并体验全新的 Apache Fesod (Incubating) ：
 
 * **官方网站：** [https://fesod.apache.org/](https://fesod.apache.org/)
 * **源码仓库：** [https://github.com/apache/fesod](https://github.com/apache/fesod)
@@ -99,6 +99,6 @@ date: 2026-02-27T00:00:00.000Z
 ```
 
 **欢迎加入我们！**
-Apache Fesod 社区始终对开发者保持开放。你可以通过订阅邮件列表 `dev@fesod.apache.org` 或在 GitHub 上提交 Issue 与我们交流。
+Apache Fesod (Incubating) 社区始终对开发者保持开放。你可以通过订阅邮件列表 `dev@fesod.apache.org` 或在 GitHub 上提交 Issue 与我们交流。
 
 让我们共同期待 Fesod 在 Apache 孵化器中茁壮成长！

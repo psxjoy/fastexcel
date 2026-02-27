@@ -6,7 +6,7 @@ tags: [announcement, release]
 date: 2026-02-27T00:00:00.000Z
 ---
 
-**February 2026** — The Apache Fesod community is pleased to announce the official release of **Apache Fesod (Incubating) 2.0.1-incubating**.
+**February 2026** — The Apache Fesod (Incubating) community is pleased to announce the official release of **Apache Fesod (Incubating) 2.0.1-incubating**.
 
 This is not only a technical iteration but also a significant milestone: **the first official release of Fesod since joining the Apache Software Foundation (ASF) Incubator.** Over the past few months, the community has collaboratively completed extensive compliance improvements, architectural refactoring, and functional enhancements. This release marks Fesod’s readiness to embark on a new chapter of high-performance Excel processing under the ASF governance.
 
@@ -84,7 +84,7 @@ Special thanks to **@delei, @psxjoy, @alaahong, @ongdisheng, @GOODBOY008**, and 
 
 ## How to Get Involved
 
-You can download and experience the new Apache Fesod through the following channels:
+You can download and experience the new Apache Fesod (Incubating) through the following channels:
 
 * **Official Website:** [https://fesod.apache.org/](https://fesod.apache.org/)
 * **Source Code:** [https://github.com/apache/fesod](https://github.com/apache/fesod)
@@ -99,6 +99,6 @@ You can download and experience the new Apache Fesod through the following chann
 ```
 
 **Join Us!**
-The Apache Fesod community is always open to new contributors. You can reach out to us by subscribing to the mailing list at `dev@fesod.apache.org` or by submitting issues on GitHub.
+The Apache Fesod (Incubating) community is always open to new contributors. You can reach out to us by subscribing to the mailing list at `dev@fesod.apache.org` or by submitting issues on GitHub.
 
 We look forward to growing together within the Apache Incubator!
