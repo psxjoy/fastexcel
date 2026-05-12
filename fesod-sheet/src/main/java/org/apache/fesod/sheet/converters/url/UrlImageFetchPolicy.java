@@ -21,7 +21,6 @@ package org.apache.fesod.sheet.converters.url;
 
 import java.net.IDN;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -54,7 +53,7 @@ public final class UrlImageFetchPolicy {
         this.allowPrivateNetwork = builder.allowPrivateNetwork;
         this.allowedPrivateHosts = Collections.unmodifiableSet(normalizeHosts(builder.allowedPrivateHosts));
         this.allowedPrivateCidrs = Collections.unmodifiableList(new ArrayList<>(builder.allowedPrivateCidrs));
-        this.allowedSchemes = Collections.unmodifiableSet(normalizeSchemes(builder.allowedSchemes));
+        this.allowedSchemes = Collections.unmodifiableSet(new HashSet<>(builder.schemePolicy.getSchemes()));
         this.maxRedirects = builder.maxRedirects;
         this.maxImageBytes = builder.maxImageBytes;
     }
@@ -92,28 +91,11 @@ public final class UrlImageFetchPolicy {
         return IDN.toASCII(normalized);
     }
 
-    private static Set<String> normalizeSchemes(Collection<String> schemes) {
-        Set<String> result = new HashSet<>();
-        for (String scheme : schemes) {
-            if (scheme == null) {
-                continue;
-            }
-            String normalized = scheme.trim().toLowerCase(Locale.ROOT);
-            if (!normalized.isEmpty()) {
-                if (!"http".equals(normalized) && !"https".equals(normalized)) {
-                    throw new IllegalArgumentException("Only http and https URL image schemes are supported");
-                }
-                result.add(normalized);
-            }
-        }
-        return result;
-    }
-
     public static final class Builder {
         private boolean allowPrivateNetwork;
         private Set<String> allowedPrivateHosts = Collections.emptySet();
         private List<CidrBlock> allowedPrivateCidrs = Collections.emptyList();
-        private Set<String> allowedSchemes = new HashSet<>(Arrays.asList("http", "https"));
+        private SchemePolicy schemePolicy = SchemePolicy.HTTP_OR_HTTPS;
         private int maxRedirects = DEFAULT_MAX_REDIRECTS;
         private int maxImageBytes = DEFAULT_MAX_IMAGE_BYTES;
 
@@ -142,12 +124,11 @@ public final class UrlImageFetchPolicy {
             return this;
         }
 
-        public Builder allowedSchemes(Collection<String> allowedSchemes) {
-            if (allowedSchemes == null) {
-                this.allowedSchemes = Collections.emptySet();
-            } else {
-                this.allowedSchemes = new HashSet<>(allowedSchemes);
+        public Builder allowedSchemes(SchemePolicy schemePolicy) {
+            if (schemePolicy == null) {
+                throw new IllegalArgumentException("Scheme policy can not be null");
             }
+            this.schemePolicy = schemePolicy;
             return this;
         }
 

@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.fesod.sheet.converters.url.CidrBlock;
+import org.apache.fesod.sheet.converters.url.SchemePolicy;
 import org.apache.fesod.sheet.converters.url.UrlImageConverter;
 import org.apache.fesod.sheet.converters.url.UrlImageFetchPolicy;
 import org.apache.fesod.sheet.metadata.GlobalConfiguration;
@@ -73,10 +74,22 @@ class UrlImageConverterTest {
     }
 
     @Test
-    void test_rejectUnsupportedPolicyScheme() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> UrlImageFetchPolicy.builder()
-                .allowedSchemes(Collections.singleton("file"))
-                .build());
+    void test_rejectNullSchemePolicy() {
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> UrlImageFetchPolicy.builder().allowedSchemes(null).build());
+    }
+
+    @Test
+    void test_httpsOnlyPolicyRejectsHttpUrl() throws Exception {
+        URL url = startServer(HttpStatus.OK, PNG_BYTES, "image/png");
+        UrlImageConverter.setFetchPolicy(
+                UrlImageFetchPolicy.builder().allowedSchemes(SchemePolicy.HTTPS).build());
+
+        IOException exception = Assertions.assertThrows(IOException.class, () -> convert(url));
+
+        Assertions.assertTrue(exception.getMessage().contains("protocol"));
+        Assertions.assertEquals(0, requestCount.get());
     }
 
     @Test
