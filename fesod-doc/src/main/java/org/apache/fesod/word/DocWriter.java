@@ -1,4 +1,3 @@
-package org.apache.fesod.word;
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,4 +16,6 @@ package org.apache.fesod.word;
  * specific language governing permissions and limitations
  * under the License.
  */
+package org.apache.fesod.word;
+
 public class DocWriter {}
