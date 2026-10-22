@@ -67,7 +67,9 @@ The parent directory must prevent untrusted parties from replacing the private d
 
 Set `java.io.tmpdir` when starting the JVM. Changing it after library initialization does not ensure that every component switches directories. In containers, use protected temporary volumes dedicated to the workload, and avoid sharing accessible staging storage with untrusted workloads.
 
-Close readers and writers and complete their resource-release lifecycle. The library does not remove its temporary directories and their contents itself: intermediate files generally remain after a normal exit as well as after exceptions, forced termination, host failures, or deletion failures. Arrange controlled cleanup of residual files that are no longer in use by active tasks. Ordinary deletion is not secure erasure and does not remove storage snapshots or backups.
+Close readers and writers and complete their resource-release lifecycle. During normal resource release, the library and its dependencies attempt to remove temporary files and caches managed by the current operation, including operation-specific temporary subdirectories where applicable. Cleanup is not guaranteed to succeed.
+
+The library does not perform a general cleanup of shared temporary directories or residual files from earlier runs or other processes. Exceptions, forced termination, host failures, or deletion failures may leave intermediate files behind. Operators must protect temporary storage and arrange controlled cleanup of residual files that are no longer in use by active tasks. Ordinary deletion is not secure erasure and does not remove storage snapshots or backups.
 
 ## Password Protection {#password-protection}
 
